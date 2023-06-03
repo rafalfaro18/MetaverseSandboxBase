@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace MetaverseSandbox {
 
@@ -28,9 +29,9 @@ namespace MetaverseSandbox {
 
         }
 
-        private void Testenv_Completed(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<Environments> obj)
+        private void Testenv_Completed(AsyncOperationHandle<Environments> obj)
         {
-            if (obj.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
+            if (obj.Status == AsyncOperationStatus.Succeeded)
             {
                 Debug.Log(obj.Result.name); // Gets the Environments Bundles
             }
