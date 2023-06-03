@@ -34,6 +34,34 @@ namespace MetaverseSandbox {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
                 Debug.Log(obj.Result.name); // Gets the Environments Bundles
+
+                // Load first environment of the first bundle
+
+                var handle = obj.Result.environments[0].LoadAssetAsync();
+                handle.Completed += Handle_Completed;
+                // Done loading Env.
+            }
+        }
+
+        private void Handle_Completed(AsyncOperationHandle<Environment> obj)
+        {
+            if (obj.Status == AsyncOperationStatus.Succeeded)
+            {
+                Debug.Log(obj.Result.name);
+
+                // Instantiate Environment Prefab
+
+                var handle = obj.Result.environmentAddressablePrefab.InstantiateAsync();
+                handle.Completed += EnvLoad_Completed;
+
+                // Done instantiating.
+            }
+        }
+
+        private void EnvLoad_Completed(AsyncOperationHandle<GameObject> obj)
+        {
+            if (obj.Status == AsyncOperationStatus.Succeeded && obj.Result == null) {
+                Debug.Log(obj.Result.name);
             }
         }
 
