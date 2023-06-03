@@ -24,7 +24,7 @@ namespace MetaverseSandbox {
 
             if (environmentBundles.Count == 0) { return; }
 
-            var Testenv = environmentBundles[0].LoadAssetAsync();
+            var Testenv = environmentBundles[0].LoadAssetAsync(); // TODO: Get all bundles.
             Testenv.Completed += Testenv_Completed;
 
         }
