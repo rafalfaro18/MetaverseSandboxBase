@@ -25,6 +25,7 @@ namespace MetaverseSandbox {
         private Transform envParent;
         public List<EnvironmentsReference> environmentBundles;
         private Scene loadedScene;
+        private bool isSceneLoaded = false;
         // Start is called before the first frame update
         void Start()
         {
@@ -59,8 +60,10 @@ namespace MetaverseSandbox {
 
                 // Instantiate Environment Prefab
 
-                var handle = Addressables.LoadSceneAsync(obj.Result.environmentAddressableScene, LoadSceneMode.Additive);
-                handle.Completed += DownloadSceneRef_Completed;
+                if (!isSceneLoaded) {
+                    var handle = Addressables.LoadSceneAsync(obj.Result.environmentAddressableScene, LoadSceneMode.Additive);
+                    handle.Completed += DownloadSceneRef_Completed;
+                }
 
                 // Done instantiating.
             }
@@ -72,6 +75,7 @@ namespace MetaverseSandbox {
             {
                 loadedScene = obj.Result.Scene;
                 Debug.Log(loadedScene);
+                isSceneLoaded = true;
             }
         }
 
@@ -90,6 +94,7 @@ namespace MetaverseSandbox {
         private void SceneUnloaded(AsyncOperation obj)
         {
             Debug.Log(" loadedScene unloaded");
+            isSceneLoaded = false;
         }
 
         [QFSW.QC.Command]
