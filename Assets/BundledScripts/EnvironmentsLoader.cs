@@ -32,7 +32,7 @@ namespace MetaverseSandbox {
 
             if (environmentBundles.Count == 0) { return; }
 
-            var Testenv = environmentBundles[0].LoadAssetAsync(); // TODO: Get all bundles.
+            var Testenv = Addressables.LoadAssetAsync<Environments>(environmentBundles[0]); // TODO: Get all bundles.
             Testenv.Completed += DownloadEnvsList_Completed;
 
         }
@@ -45,7 +45,7 @@ namespace MetaverseSandbox {
 
                 // Load first environment of the first bundle
 
-                var handle = obj.Result.environments[0].LoadAssetAsync();
+                var handle = Addressables.LoadAssetAsync<MetaverseSandbox.Core.Environment>(obj.Result.environments[0]);
                 handle.Completed += DownloadEnvRef_Completed;
                 // Done loading Env.
             }
