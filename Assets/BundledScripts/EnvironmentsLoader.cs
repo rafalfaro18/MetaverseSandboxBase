@@ -33,11 +33,11 @@ namespace MetaverseSandbox {
             if (environmentBundles.Count == 0) { return; }
 
             var Testenv = environmentBundles[0].LoadAssetAsync(); // TODO: Get all bundles.
-            Testenv.Completed += Testenv_Completed;
+            Testenv.Completed += DownloadEnvsList_Completed;
 
         }
 
-        private void Testenv_Completed(AsyncOperationHandle<MetaverseSandbox.Core.Environments> obj)
+        private void DownloadEnvsList_Completed(AsyncOperationHandle<MetaverseSandbox.Core.Environments> obj)
         {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
@@ -46,12 +46,12 @@ namespace MetaverseSandbox {
                 // Load first environment of the first bundle
 
                 var handle = obj.Result.environments[0].LoadAssetAsync();
-                handle.Completed += Handle_Completed;
+                handle.Completed += DownloadEnvRef_Completed;
                 // Done loading Env.
             }
         }
 
-        private void Handle_Completed(AsyncOperationHandle<MetaverseSandbox.Core.Environment> obj)
+        private void DownloadEnvRef_Completed(AsyncOperationHandle<MetaverseSandbox.Core.Environment> obj)
         {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
@@ -60,13 +60,13 @@ namespace MetaverseSandbox {
                 // Instantiate Environment Prefab
 
                 var handle = Addressables.LoadSceneAsync(obj.Result.environmentAddressableScene, LoadSceneMode.Additive);
-                handle.Completed += EnvLoad_Completed;
+                handle.Completed += DownloadSceneRef_Completed;
 
                 // Done instantiating.
             }
         }
 
-        private void EnvLoad_Completed(AsyncOperationHandle<SceneInstance> obj)
+        private void DownloadSceneRef_Completed(AsyncOperationHandle<SceneInstance> obj)
         {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
@@ -93,14 +93,14 @@ namespace MetaverseSandbox {
         }
 
         [QFSW.QC.Command]
-        public void LoadSceneAt(int i)
+        public void DownloadSceneAt(int i)
         {
             if (environmentBundles == null) { return; }
 
             if (environmentBundles.Count == 0) { return; }
 
             var Testenv = environmentBundles[i].LoadAssetAsync();
-            Testenv.Completed += Testenv_Completed;
+            Testenv.Completed += DownloadEnvsList_Completed;
         }
 
     }
