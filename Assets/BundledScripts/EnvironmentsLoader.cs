@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using MetaverseSandbox.Core;
 
 namespace MetaverseSandbox {
 
@@ -33,7 +34,7 @@ namespace MetaverseSandbox {
 
         }
 
-        private void Testenv_Completed(AsyncOperationHandle<Environments> obj)
+        private void Testenv_Completed(AsyncOperationHandle<MetaverseSandbox.Core.Environments> obj)
         {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
@@ -47,7 +48,7 @@ namespace MetaverseSandbox {
             }
         }
 
-        private void Handle_Completed(AsyncOperationHandle<Environment> obj)
+        private void Handle_Completed(AsyncOperationHandle<MetaverseSandbox.Core.Environment> obj)
         {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
