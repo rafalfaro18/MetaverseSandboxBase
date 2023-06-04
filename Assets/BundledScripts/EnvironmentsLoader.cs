@@ -74,7 +74,7 @@ namespace MetaverseSandbox {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
                 loadedScene = obj.Result.Scene;
-                Debug.Log(loadedScene);
+                Debug.Log(loadedScene.name);
                 isSceneLoaded = true;
             }
         }
