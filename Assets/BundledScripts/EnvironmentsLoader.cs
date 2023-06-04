@@ -42,7 +42,7 @@ namespace MetaverseSandbox {
         {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
-                Debug.Log(obj.Result.name); // Gets the Environments Bundles
+                Debug.Log("- " + obj.Result.name); // Gets the Environments Bundles
 
                 // Load first environment of the first bundle
 
@@ -56,7 +56,7 @@ namespace MetaverseSandbox {
         {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
-                Debug.Log(obj.Result.name);
+                Debug.Log("-- " + obj.Result.name);
 
                 // Instantiate Environment Prefab
 
@@ -66,7 +66,7 @@ namespace MetaverseSandbox {
                     handle.Completed += DownloadSceneRef_Completed;
                 }
                 else {
-                    Debug.Log("Scene already loaded");
+                    Debug.Log("Scene already loaded. Unload the loaded scene first.");
                 }
 
                 // Done instantiating.
@@ -78,7 +78,7 @@ namespace MetaverseSandbox {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
                 loadedScene = obj.Result.Scene;
-                Debug.Log(loadedScene.name);
+                Debug.Log("--- " + loadedScene.name);
                 isSceneLoaded = true;
             }
         }
