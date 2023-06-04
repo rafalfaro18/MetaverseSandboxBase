@@ -72,3 +72,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/AddressableAssetsData/link.xml
 Assets/AddressableAssetsData/link.xml.meta
+
+/[Aa]ssets/[Pp]lugins/QFSW/*
+/[Aa]ssets/[Pp]lugins/QFSW.meta
