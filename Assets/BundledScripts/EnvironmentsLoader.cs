@@ -60,9 +60,13 @@ namespace MetaverseSandbox {
 
                 // Instantiate Environment Prefab
 
-                if (!isSceneLoaded) {
+                if (!isSceneLoaded)
+                {
                     var handle = Addressables.LoadSceneAsync(obj.Result.environmentAddressableScene, LoadSceneMode.Additive);
                     handle.Completed += DownloadSceneRef_Completed;
+                }
+                else {
+                    Debug.Log("Scene already loaded");
                 }
 
                 // Done instantiating.
