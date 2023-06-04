@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cb7737e155d294fb395b81d037342a, type: 3}
   m_Name: EnvironmentLobbyGreen
   m_EditorClassIdentifier: 
-  environmentAddressablePrefab:
-    m_AssetGUID: 9ce16fad424d5124ea0f88bc38c11f9e
+  environmentAddressableScene:
+    m_AssetGUID: acb50ee4a3c14b041965940122fb5a2e
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

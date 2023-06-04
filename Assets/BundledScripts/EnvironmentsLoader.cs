@@ -7,6 +7,8 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using MetaverseSandbox.Core;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
 
 namespace MetaverseSandbox {
 
@@ -56,53 +58,25 @@ namespace MetaverseSandbox {
 
                 // Instantiate Environment Prefab
 
-                var handle = obj.Result.environmentAddressablePrefab.InstantiateAsync(envParent);
+                var handle = Addressables.LoadSceneAsync(obj.Result.environmentAddressableScene, LoadSceneMode.Additive);
                 handle.Completed += EnvLoad_Completed;
 
                 // Done instantiating.
             }
         }
 
-        private void EnvLoad_Completed(AsyncOperationHandle<GameObject> obj)
+        private void EnvLoad_Completed(AsyncOperationHandle<SceneInstance> obj)
         {
-            if (obj.Status == AsyncOperationStatus.Succeeded && obj.Result == null) {
-                Debug.Log(obj.Result.name);
+            if (obj.Status == AsyncOperationStatus.Succeeded)
+            {
+                Debug.Log(obj.Result.Scene.name);
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.T)) {
-                foreach (Transform child in envParent)
-                {
-                    Addressables.Release(child.gameObject);
-                    GameObject.Destroy(child.gameObject);
-                }
-
-                if (environmentBundles == null) { return; }
-
-                if (environmentBundles.Count == 0) { return; }
-
-                var Testenv = environmentBundles[1].LoadAssetAsync(); // This one is remote.
-                Testenv.Completed += Testenv_Completed;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                foreach (Transform child in envParent)
-                {
-                    Addressables.Release(child.gameObject);
-                    GameObject.Destroy(child.gameObject);
-                };
-
-                if (environmentBundles == null) { return; }
-
-                if (environmentBundles.Count == 0) { return; }
-
-                var Testenv = environmentBundles[0].LoadAssetAsync(); // This one is remote.
-                Testenv.Completed += Testenv_Completed;
-            }
+           
         }
     }
 }
