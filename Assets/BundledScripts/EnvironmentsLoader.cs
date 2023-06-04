@@ -18,7 +18,8 @@ namespace MetaverseSandbox {
     }
     public class EnvironmentsLoader : MonoBehaviour
     {
-        private GameObject loadedEnv = null;
+        [SerializeField]
+        private Transform envParent;
         public List<EnvironmentsReference> environmentBundles;
         // Start is called before the first frame update
         void Start()
@@ -54,7 +55,7 @@ namespace MetaverseSandbox {
 
                 // Instantiate Environment Prefab
 
-                var handle = obj.Result.environmentAddressablePrefab.InstantiateAsync();
+                var handle = obj.Result.environmentAddressablePrefab.InstantiateAsync(envParent);
                 handle.Completed += EnvLoad_Completed;
 
                 // Done instantiating.
@@ -65,7 +66,6 @@ namespace MetaverseSandbox {
         {
             if (obj.Status == AsyncOperationStatus.Succeeded && obj.Result == null) {
                 Debug.Log(obj.Result.name);
-                loadedEnv = obj.Result;
             }
         }
 
@@ -73,7 +73,11 @@ namespace MetaverseSandbox {
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.T)) {
-                Destroy(loadedEnv, 0.1f);
+                foreach (Transform child in envParent)
+                {
+                    Addressables.Release(child.gameObject);
+                    GameObject.Destroy(child.gameObject);
+                }
 
                 if (environmentBundles == null) { return; }
 
@@ -85,7 +89,11 @@ namespace MetaverseSandbox {
 
             if (Input.GetKeyDown(KeyCode.Y))
             {
-                Destroy(loadedEnv, 0.1f);
+                foreach (Transform child in envParent)
+                {
+                    Addressables.Release(child.gameObject);
+                    GameObject.Destroy(child.gameObject);
+                };
 
                 if (environmentBundles == null) { return; }
 
