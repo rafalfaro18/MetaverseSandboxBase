@@ -99,7 +99,7 @@ namespace MetaverseSandbox {
 
             if (environmentBundles.Count == 0) { return; }
 
-            var Testenv = environmentBundles[i].LoadAssetAsync();
+            var Testenv = Addressables.LoadAssetAsync<MetaverseSandbox.Core.Environments>(environmentBundles[i]);
             Testenv.Completed += DownloadEnvsList_Completed;
         }
 
