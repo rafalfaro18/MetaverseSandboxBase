@@ -91,5 +91,17 @@ namespace MetaverseSandbox {
         {
             Debug.Log(" loadedScene unloaded");
         }
+
+        [QFSW.QC.Command]
+        public void LoadSceneAt(int i)
+        {
+            if (environmentBundles == null) { return; }
+
+            if (environmentBundles.Count == 0) { return; }
+
+            var Testenv = environmentBundles[i].LoadAssetAsync();
+            Testenv.Completed += Testenv_Completed;
+        }
+
     }
 }
