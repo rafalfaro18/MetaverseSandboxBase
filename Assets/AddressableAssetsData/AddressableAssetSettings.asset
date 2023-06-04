@@ -34,15 +34,16 @@ MonoBehaviour:
   m_MonoScriptBundleNaming: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: 10464af4efd8acc48bc64f7d8137f44b
   m_RemoteCatalogLoadPath:
-    m_Id: 
+    m_Id: 3b54e43a6b213034493313a85f3763ff
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 3f8aa5527600dcf4ea454e1f8681211e, type: 2}
   - {fileID: 11400000, guid: 213b5f86e54e89f408ab28ca9e064022, type: 2}
+  - {fileID: 11400000, guid: 5783c17acca070245a011454705809c8, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -63,7 +64,7 @@ MonoBehaviour:
       - m_Id: 10464af4efd8acc48bc64f7d8137f44b
         m_Value: ServerData/[BuildTarget]
       - m_Id: 3b54e43a6b213034493313a85f3763ff
-        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+        m_Value: http://localhost:8080/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 315731720b41d87479ed04e68a4a7089
       m_Name: BuildTarget

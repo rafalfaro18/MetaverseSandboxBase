@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: DLCEnvironmentsPack1
+  m_EditorClassIdentifier: 
+  m_GroupName: DLCEnvironmentsPack1
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f87225b0e00a06c40998597798a75214
+  m_SerializeEntries:
+  - m_GUID: 0ec7a6be51f917c49a2f3280c2a2ab5e
+    m_Address: Assets/DLC/DLCEnvironmentsPack1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: c500ea9c822a7eb4ca51c4f9bd73acdc, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 658d2becccc921948bbe0ed0ce1e1d1a, type: 2}
+    - {fileID: 11400000, guid: 70919723484559142b93b9972d7b412f, type: 2}
