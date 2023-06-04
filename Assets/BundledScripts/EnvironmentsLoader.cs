@@ -24,6 +24,7 @@ namespace MetaverseSandbox {
         [SerializeField]
         private Transform envParent;
         public List<EnvironmentsReference> environmentBundles;
+        private Scene loadedScene;
         // Start is called before the first frame update
         void Start()
         {
@@ -69,7 +70,8 @@ namespace MetaverseSandbox {
         {
             if (obj.Status == AsyncOperationStatus.Succeeded)
             {
-                Debug.Log(obj.Result.Scene.name);
+                loadedScene = obj.Result.Scene;
+                Debug.Log(loadedScene);
             }
         }
 
@@ -77,6 +79,17 @@ namespace MetaverseSandbox {
         void Update()
         {
            
+        }
+
+        [QFSW.QC.Command]
+        public void UnloadCurrentScene() {
+            var handle = SceneManager.UnloadSceneAsync(loadedScene);
+            handle.completed += SceneUnloaded;
+        }
+
+        private void SceneUnloaded(AsyncOperation obj)
+        {
+            Debug.Log(" loadedScene unloaded");
         }
     }
 }
