@@ -140,5 +140,23 @@ namespace MetaverseSandbox {
                 Debug.Log("Downloaded");
             }
         }
+
+        [QFSW.QC.Command]
+        public void TestDownloadSpecificEnvironmentScene(string environmentAddressableUrl)
+        { // Test with: Assets/DLC/DLCEnvironmentsPack2/Spheres/Spheres.asset
+            var envHandle = Addressables.LoadAssetAsync<MetaverseSandbox.Core.Environment>(environmentAddressableUrl);
+            envHandle.Completed += EnvHandleDirectDownload_Completed;
+        }
+
+        
+        private void EnvHandleDirectDownload_Completed(AsyncOperationHandle<Core.Environment> obj)
+        {
+            if(obj.Status == AsyncOperationStatus.Succeeded)
+            {
+                string scenePath = obj.Result.environmentAddressableScene;
+
+                Addressables.LoadSceneAsync(scenePath, LoadSceneMode.Additive).Completed += DownloadSceneRef_Completed;
+            }
+        }
     }
 }
