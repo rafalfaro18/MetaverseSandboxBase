@@ -35,6 +35,13 @@ This command will start a web server in port 8080 in your local machine.
 7. Run the base game (you don't have to recompile) and do the Set Up Steps 4-6 again but replace `` http://127.0.0.1:8080`` for your web hosting address where you previously uploaded the contents of your new Unity Project's Addressables bake/build result (folder ``ServerData``) and the name of the catalo.json file for yours.
 8. In the quantum Console (press Esc) you should see log messages that you downloaded succesfully the new catalog.
 
+## Notes
+- Use addressables Remote profile custom:
+```txt
+Remote.BuildPath: ServerData/[BuildTarget]
+Remote.LoadPath: http://127.0.0.1:8080/[BuildTarget]
+```
+
 ## To Do
 - Refactor to allow any scene url of any bundle. Right now the app only loads 2 possible scenes for demo purposes from an Array of only 2 items [0-1].
 - Code logic for interactables that might come from Addressable Scenes in remote catalogs.
