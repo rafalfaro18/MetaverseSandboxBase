@@ -36,3 +36,5 @@ This command will start a web server in port 8080 in your local machine.
 
 ## To Do
 - Refactor to allow any scene url of any bundle. Right now the app only loads 2 possible scenes for demo purposes from an Array of only 2 items [0-1].
+- Code logic for interactables that might come from Addressable Scenes in remote catalogs.
+- Add networking support for multiplayer and network replication of interactables state and player transforms.
