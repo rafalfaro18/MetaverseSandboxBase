@@ -12,8 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cb7737e155d294fb395b81d037342a, type: 3}
   m_Name: LobbyEnvironment
   m_EditorClassIdentifier: 
-  environmentAddressableScene:
-    m_AssetGUID: 924789ebadfd5e44b9f4ba4d74dd5af5
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  environmentAddressableScene: Assets/BundledEnvironments/Lobby/Lobby.unity

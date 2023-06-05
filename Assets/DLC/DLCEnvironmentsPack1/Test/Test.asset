@@ -12,8 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cb7737e155d294fb395b81d037342a, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  environmentAddressableScene:
-    m_AssetGUID: 43e6eeb3c7dd5424aac59d37dbeb915f
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  environmentAddressableScene: Assets/DLC/DLCEnvironmentsPack1/Test/Test.unity
