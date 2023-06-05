@@ -8,6 +8,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using MetaverseSandbox.Core;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets.ResourceLocators;
 
 namespace MetaverseSandbox {
 
@@ -111,5 +112,33 @@ namespace MetaverseSandbox {
             Testenv.Completed += DownloadEnvsList_Completed;
         }
 
+        [QFSW.QC.Command]
+        public void DownloadRemoteCatalog(string rootFolderUrl, string catalogFileName) {
+            string platformName = "StandaloneWindows64";
+#if UNITY_ANDROID
+            platformName = "Android";
+#endif
+            if (rootFolderUrl.EndsWith("/")) {
+                rootFolderUrl = rootFolderUrl.Substring(0, rootFolderUrl.Length - 1);
+            }
+
+            if (catalogFileName.EndsWith("/"))
+            {
+                catalogFileName = catalogFileName.Substring(0, catalogFileName.Length - 1);
+            }
+
+            string catalogUrl = rootFolderUrl + "/" + platformName + "/" + catalogFileName;
+
+            Debug.Log("Downloading " + catalogUrl );
+            Addressables.LoadContentCatalogAsync(catalogUrl).Completed += CatalogDownloader_Completed;
+        }
+
+        private void CatalogDownloader_Completed(AsyncOperationHandle<IResourceLocator> obj)
+        {
+            if(obj.Status == AsyncOperationStatus.Succeeded)
+            {
+                Debug.Log("Downloaded");
+            }
+        }
     }
 }
