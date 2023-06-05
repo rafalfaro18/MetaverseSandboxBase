@@ -23,6 +23,7 @@ This command will start a web server in port 8080 in your local machine.
 - Unity 2021.3.25f1
 - Quantum Console
 - com.rafalfaro.metaversesandbox 1.0.3
+- com.unity.render-pipelines.universal: 12.1.11
 
 ## Creating Remote Catalogs
 1. You only need same versions of: com.rafalfaro.metaversesandbox , com.unity.addressables and Unity.
